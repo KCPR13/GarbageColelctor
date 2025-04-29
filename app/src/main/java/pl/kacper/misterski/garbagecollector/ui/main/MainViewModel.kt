@@ -15,6 +15,8 @@ class MainViewModel @Inject constructor(
     @Named("ViewModel Scoped") val viewModelScopedObj: TestObject,
     @Named("Unscoped ViewModel") val unscopedViewModelObj: TestObject, ) : ViewModel() {
 
+    val obj = TestObject("MainViewModel object")
+
 
     init {
         Log.d("GC_TEST", "MainViewModel init!")

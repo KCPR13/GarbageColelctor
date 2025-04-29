@@ -1,7 +1,5 @@
 package pl.kacper.misterski.garbagecollector.ui.main
 
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,11 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pl.kacper.misterski.garbagecollector.utils.TestObject
-import java.lang.ref.WeakReference
 
 @Composable
 fun MainScreen(showSecondScreen: () -> Unit) {
-    var mainScreenObject: WeakReference<TestObject>? = null
+    var mainScreenObject: TestObject? = null
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,21 +46,11 @@ fun MainScreen(showSecondScreen: () -> Unit) {
         }
 
         Button(onClick = {
-            val obj = TestObject("Weak reference")
-            mainScreenObject = WeakReference(obj)
+            val obj = TestObject("Screen reference")
+            mainScreenObject = obj
         }) {
             Text("Create object")
         }
-        Button(onClick = {
-            System.gc()
-            Handler(Looper.getMainLooper()).postDelayed({
-                val isAlive = mainScreenObject?.get() != null
-                Log.d("GC_TEST", "Is object alive? $isAlive")
-            }, 3000) // daj GC trochę czasu
-        }) {
-            Text("Remove object")
-        }
-
         Spacer(modifier = Modifier.height(24.dp))
 
         Text("Check Logcat with tag: GC_TEST", fontSize = 14.sp)

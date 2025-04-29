@@ -1,4 +1,4 @@
-package pl.kacper.misterski.garbagecollector
+package pl.kacper.misterski.garbagecollector.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
