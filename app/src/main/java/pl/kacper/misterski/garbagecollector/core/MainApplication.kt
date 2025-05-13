@@ -1,5 +1,6 @@
 package pl.kacper.misterski.garbagecollector.core
 
+import android.app.ActivityManager
 import android.app.Application
 import android.os.Handler
 import android.os.Looper
@@ -21,6 +22,15 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        // LINK https://developer.android.com/reference/android/app/ActivityManager#getMemoryClass()
+        val activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
+        val memoryClass = activityManager.memoryClass
+        val largeMemoryClass = activityManager.largeMemoryClass // używane gdy android:largeHeap="true" w manifeście
+        Log.d(
+            "GC_TEST",
+            "memoryClass: ${memoryClass}MB | largeMemoryClass: ${largeMemoryClass}MB"
+        )
+
         handler.post(logMemoryRunnable)
     }
 

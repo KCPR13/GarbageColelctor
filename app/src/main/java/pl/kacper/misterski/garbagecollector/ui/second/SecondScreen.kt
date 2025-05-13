@@ -1,5 +1,6 @@
 package pl.kacper.misterski.garbagecollector.ui.second
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -37,6 +38,14 @@ fun SecondScreen(onBack: () -> Unit, goToMain: () -> Unit) {
             goToMain.invoke()
         }) {
             Text("Open new main fragment")
+        }
+        Button(onClick = {
+            System.gc()
+            Runtime.getRuntime().gc()
+            System.runFinalization()
+            Log.d("GC_TEST", "Manual GC triggered.")
+        }) {
+            Text("Force GC")
         }
     }
 }

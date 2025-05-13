@@ -34,6 +34,7 @@ fun MainScreen(showSecondScreen: () -> Unit) {
         Button(onClick = {
             System.gc()
             Runtime.getRuntime().gc()
+            System.runFinalization()
             Log.d("GC_TEST", "Manual GC triggered.")
         }) {
             Text("Force GC")
@@ -52,7 +53,5 @@ fun MainScreen(showSecondScreen: () -> Unit) {
             Text("Create object")
         }
         Spacer(modifier = Modifier.height(24.dp))
-
-        Text("Check Logcat with tag: GC_TEST", fontSize = 14.sp)
     }
 }
