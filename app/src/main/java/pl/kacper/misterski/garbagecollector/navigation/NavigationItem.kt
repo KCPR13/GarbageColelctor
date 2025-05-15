@@ -7,5 +7,6 @@ sealed class NavigationItem(
     data object Start : NavigationItem(Screen.START.name)
 
     data object Second : NavigationItem(Screen.SECOND.name)
+    data object Third : NavigationItem(Screen.THIRD.name)
 
 }

@@ -1,4 +1,4 @@
-package pl.kacper.misterski.garbagecollector.ui.main
+package pl.kacper.misterski.garbagecollector.ui.third
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -8,23 +8,20 @@ import javax.inject.Inject
 import javax.inject.Named
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class ThirdViewModel @Inject constructor(
     @Named("Singleton") val singletonObj: TestObject,
     @Named("Unscoped Singleton") val unscopedSingletonObj: TestObject,
     @Named("ViewModel Scoped") val viewModelScopedObj: TestObject,
-    @Named("Unscoped ViewModel") val unscopedViewModelObj: TestObject,
-) : ViewModel() {
-
-    val obj = TestObject("MainViewModel object")
-
+    @Named("Unscoped ViewModel") val unscopedViewModelObj: TestObject, ) : ViewModel() {
+        val obj = TestObject("ThirdViewModel object")
 
     init {
-        Log.d("GC_TEST", "MainViewModel init!")
+        Log.d("GC_TEST", "ThirdViewModel init!")
     }
 
 
     override fun onCleared() {
         super.onCleared()
-        Log.d("GC_TEST", "MainViewModel cleared!")
+        Log.d("GC_TEST", "ThirdViewModel cleared!")
     }
-}
+    }

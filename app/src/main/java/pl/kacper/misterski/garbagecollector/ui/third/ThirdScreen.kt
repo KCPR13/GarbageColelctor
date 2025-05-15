@@ -1,6 +1,5 @@
-package pl.kacper.misterski.garbagecollector.ui.second
+package pl.kacper.misterski.garbagecollector.ui.third
 
-import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,16 +12,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@Composable
-fun SecondScreen(onBack: () -> Unit, goToMain: () -> Unit,
-                 openThirdScreen: () -> Unit,
-                 createObjectWithContext: (Context) -> Unit) {
-    val context = LocalContext.current.applicationContext
 
+@Composable
+fun ThirdScreen(onBack: () -> Unit, goToMain: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -31,11 +26,11 @@ fun SecondScreen(onBack: () -> Unit, goToMain: () -> Unit,
             Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("2", fontSize = 40.sp)
+        Text("3", fontSize = 40.sp)
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text("SecondScreen", fontSize = 20.sp)
+        Text("ThirdScreen", fontSize = 20.sp)
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -49,19 +44,6 @@ fun SecondScreen(onBack: () -> Unit, goToMain: () -> Unit,
         }) {
             Text("Open new MainScreen")
         }
-        Button(onClick = {
-            openThirdScreen.invoke()
-        }) {
-            Text("Open new ThirdScreen")
-        }
-
-        Button(onClick = {
-            createObjectWithContext.invoke(context)
-        }) {
-            Text("Create object with context")
-        }
-
-
         Button(onClick = {
             System.gc()
             Runtime.getRuntime().gc()

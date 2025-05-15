@@ -27,6 +27,10 @@ fun MainScreen(showSecondScreen: () -> Unit) {
             Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text("1", fontSize = 40.sp)
+
+        Spacer(modifier = Modifier.height(24.dp))
+
         Text("Testing DI + GC", fontSize = 20.sp)
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -43,7 +47,7 @@ fun MainScreen(showSecondScreen: () -> Unit) {
         Button(onClick = {
             showSecondScreen.invoke()
         }) {
-            Text("Open second screen")
+            Text("Open SecondScreen")
         }
 
         Button(onClick = {
