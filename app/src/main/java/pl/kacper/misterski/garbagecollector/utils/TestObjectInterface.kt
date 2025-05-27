@@ -1,0 +1,3 @@
+package pl.kacper.misterski.garbagecollector.utils
+
+interface TestObjectInterface
