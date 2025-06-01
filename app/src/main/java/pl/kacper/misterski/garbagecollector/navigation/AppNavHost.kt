@@ -24,7 +24,8 @@ import pl.kacper.misterski.garbagecollector.ui.third.ThirdViewModel
 //7. NavigateUp (without and with screen rotation)
 //8. 1 screen without any injection
 //9. Force GC in both scenarios
-//10. Profiler (Track memory consumption / Analyze Memory Usage) and logcat comparison
+//10. Another Activity
+//11. Profiler (Track memory consumption / Analyze Memory Usage) and logcat comparison
 
 
 @Composable
