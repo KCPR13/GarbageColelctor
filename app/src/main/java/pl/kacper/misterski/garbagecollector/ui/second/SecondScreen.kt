@@ -13,15 +13,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun SecondScreen(onBack: () -> Unit, goToMain: () -> Unit,
-                 openThirdScreen: () -> Unit,
-                 createObjectWithContext: (Context) -> Unit) {
-    val context = LocalContext.current.applicationContext
+                 openThirdScreen: () -> Unit) {
 
     Column(
         modifier = Modifier
@@ -54,13 +51,6 @@ fun SecondScreen(onBack: () -> Unit, goToMain: () -> Unit,
         }) {
             Text("Open new ThirdScreen")
         }
-
-        Button(onClick = {
-            createObjectWithContext.invoke(context)
-        }) {
-            Text("Create object with context")
-        }
-
 
         Button(onClick = {
             System.gc()

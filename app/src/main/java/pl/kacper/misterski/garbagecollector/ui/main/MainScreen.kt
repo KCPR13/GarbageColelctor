@@ -14,12 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pl.kacper.misterski.garbagecollector.utils.TestObject
 
 @Composable
 fun MainScreen(showSecondScreen: () -> Unit,
                openAnotherActivity: () -> Unit) {
-    var mainScreenObject: TestObject? = null
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,13 +47,6 @@ fun MainScreen(showSecondScreen: () -> Unit,
             showSecondScreen.invoke()
         }) {
             Text("Open SecondScreen")
-        }
-
-        Button(onClick = {
-            val obj = TestObject("Screen reference")
-            mainScreenObject = obj
-        }) {
-            Text("Create object")
         }
         Spacer(modifier = Modifier.height(24.dp))
 
