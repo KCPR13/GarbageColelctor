@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GarbageCollector"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.another.AnotherActivity"
+            android:exported="false" />
 
         <profileable android:shell="true" />
         <activity

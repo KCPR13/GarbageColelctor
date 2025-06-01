@@ -32,7 +32,8 @@ import pl.kacper.misterski.garbagecollector.ui.third.ThirdViewModel
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
-    navController: NavHostController
+    navController: NavHostController,
+    openAnotherActivity: () -> Unit
 ) {
     NavHost(
         modifier = modifier,
@@ -48,7 +49,8 @@ fun AppNavHost(
             MainScreen(
                 showSecondScreen = {
                     navController.navigate(NavigationItem.Second.route)
-                }
+                },
+                openAnotherActivity = openAnotherActivity
             )
         }
         composable(NavigationItem.Second.route) {

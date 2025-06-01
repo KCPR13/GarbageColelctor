@@ -1,4 +1,4 @@
-package pl.kacper.misterski.garbagecollector.ui.main
+package pl.kacper.misterski.garbagecollector.ui.another
 
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
@@ -14,12 +14,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pl.kacper.misterski.garbagecollector.utils.TestObject
 
 @Composable
-fun MainScreen(showSecondScreen: () -> Unit,
-               openAnotherActivity: () -> Unit) {
-    var mainScreenObject: TestObject? = null
+fun AnotherScreen(onBackPressed: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -28,11 +25,7 @@ fun MainScreen(showSecondScreen: () -> Unit,
             Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("1", fontSize = 40.sp)
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Text("Testing DI + GC", fontSize = 20.sp)
+        Text("Another screen", fontSize = 40.sp)
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -46,23 +39,10 @@ fun MainScreen(showSecondScreen: () -> Unit,
         }
 
         Button(onClick = {
-            showSecondScreen.invoke()
+            onBackPressed.invoke()
         }) {
-            Text("Open SecondScreen")
-        }
-
-        Button(onClick = {
-            val obj = TestObject("Screen reference")
-            mainScreenObject = obj
-        }) {
-            Text("Create object")
+            Text("Back to MainActivity")
         }
         Spacer(modifier = Modifier.height(24.dp))
-
-        Button(onClick = {
-            openAnotherActivity.invoke()
-        }) {
-            Text("Open AnotherActivity")
-        }
     }
 }

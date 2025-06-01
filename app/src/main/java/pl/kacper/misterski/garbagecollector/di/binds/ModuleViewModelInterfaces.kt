@@ -1,4 +1,4 @@
-package pl.kacper.misterski.garbagecollector.di
+package pl.kacper.misterski.garbagecollector.di.binds
 
 import dagger.Binds
 import dagger.Module
