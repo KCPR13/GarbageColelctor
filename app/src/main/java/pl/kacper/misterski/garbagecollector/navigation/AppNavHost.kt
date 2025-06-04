@@ -49,7 +49,8 @@ fun AppNavHost(
                 showSecondScreen = {
                     navController.navigate(NavigationItem.Second.route)
                 },
-                openAnotherActivity = openAnotherActivity
+                openAnotherActivity = openAnotherActivity,
+                logInfo = viewModel::log,
             )
         }
         composable(NavigationItem.Second.route) {
@@ -63,7 +64,8 @@ fun AppNavHost(
                 },
                 openThirdScreen = {
                     navController.navigate(NavigationItem.Third.route)
-                }
+                },
+                logInfo = viewModel::log
             )
         }
 
@@ -77,6 +79,7 @@ fun AppNavHost(
                 goToMain = {
                     navController.navigate(NavigationItem.Start.route)
                 },
+                logInfo = viewModel::log,
             )
         }
 

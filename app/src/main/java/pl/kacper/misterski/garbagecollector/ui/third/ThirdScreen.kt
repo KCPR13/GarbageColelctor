@@ -17,7 +17,8 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun ThirdScreen(onBack: () -> Unit, goToMain: () -> Unit) {
+fun ThirdScreen(onBack: () -> Unit, goToMain: () -> Unit,
+                logInfo: (String, String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -48,7 +49,7 @@ fun ThirdScreen(onBack: () -> Unit, goToMain: () -> Unit) {
             System.gc()
             Runtime.getRuntime().gc()
             System.runFinalization()
-            Log.d("GC_TEST", "Manual GC triggered.")
+            logInfo("GC_TEST", "Manual GC triggered.")
         }) {
             Text("Force GC")
         }

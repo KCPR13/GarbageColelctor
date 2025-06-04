@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun AnotherScreen(onBackPressed: () -> Unit) {
+fun AnotherScreen(onBackPressed: () -> Unit, logInfo: (String,String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -33,7 +33,7 @@ fun AnotherScreen(onBackPressed: () -> Unit) {
             System.gc()
             Runtime.getRuntime().gc()
             System.runFinalization()
-            Log.d("GC_TEST", "Manual GC triggered.")
+            logInfo("GC_TEST", "Manual GC triggered.")
         }) {
             Text("Force GC")
         }

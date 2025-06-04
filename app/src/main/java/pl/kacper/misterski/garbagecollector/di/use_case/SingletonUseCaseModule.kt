@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import pl.kacper.misterski.garbagecollector.data.TestRepository
 import pl.kacper.misterski.garbagecollector.use_case.TestUseCase
+import pl.kacper.misterski.garbagecollector.util.AppFileLogger
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -16,15 +17,20 @@ object SingletonUseCaseModule {
     @Provides
     @Singleton
     @Named("Singleton UseCase")
-    fun provideSingletonTestUseCase(@Named("Singleton Repository") testRepository: TestRepository) = TestUseCase(testRepository, "Singleton UseCase")
+    fun provideSingletonTestUseCase(
+        @Named("Singleton Repository") testRepository: TestRepository,
+        appFileLogger: AppFileLogger
+    ) = TestUseCase(testRepository, appFileLogger, "Singleton UseCase")
 
     @Provides
     @Named("Unscoped Singleton UseCase")
-    fun provideUnscopedSingletonTestUseCase(@Named("Unscoped Repository") testRepository: TestRepository) = TestUseCase(
+    fun provideUnscopedSingletonTestUseCase(
+        appFileLogger: AppFileLogger,
+        @Named("Unscoped Repository") testRepository: TestRepository
+    ) = TestUseCase(
         testRepository,
+        appFileLogger,
         "Unscoped Singleton UseCase"
     )
-
-
 
 }

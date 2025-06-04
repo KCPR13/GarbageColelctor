@@ -6,10 +6,15 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
+import pl.kacper.misterski.garbagecollector.util.AppFileLogger
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @HiltAndroidApp
 class MainApplication : Application() {
+
+    @Inject
+    lateinit var appFileLogger: AppFileLogger
 
     private val handler = Handler(Looper.getMainLooper())
 
@@ -26,7 +31,9 @@ class MainApplication : Application() {
         val activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
         val memoryClass = activityManager.memoryClass
         val largeMemoryClass = activityManager.largeMemoryClass // używane gdy android:largeHeap="true" w manifeście
-        Log.d(
+
+
+        appFileLogger.log(
             "GC_TEST",
             "memoryClass: ${memoryClass}MB | largeMemoryClass: ${largeMemoryClass}MB"
         )
@@ -40,7 +47,7 @@ class MainApplication : Application() {
         val usedMemInMB = (runtime.totalMemory() - runtime.freeMemory()) / 1048576L
         val maxHeapSizeInMB = runtime.maxMemory() / 1048576L
 
-        Log.d(
+        appFileLogger.log(
             "GC_TEST",
             "[HEAP] Used: ${usedMemInMB}MB | Max: ${maxHeapSizeInMB}MB"
         )

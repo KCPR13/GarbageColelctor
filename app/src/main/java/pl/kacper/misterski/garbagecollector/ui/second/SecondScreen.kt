@@ -1,7 +1,5 @@
 package pl.kacper.misterski.garbagecollector.ui.second
 
-import android.content.Context
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,8 +15,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondScreen(onBack: () -> Unit, goToMain: () -> Unit,
-                 openThirdScreen: () -> Unit) {
+fun SecondScreen(
+    onBack: () -> Unit, goToMain: () -> Unit,
+    openThirdScreen: () -> Unit,
+    logInfo: (String, String) -> Unit
+) {
 
     Column(
         modifier = Modifier
@@ -56,7 +57,7 @@ fun SecondScreen(onBack: () -> Unit, goToMain: () -> Unit,
             System.gc()
             Runtime.getRuntime().gc()
             System.runFinalization()
-            Log.d("GC_TEST", "Manual GC triggered.")
+            logInfo("GC_TEST", "Manual GC triggered.")
         }) {
             Text("Force GC")
         }

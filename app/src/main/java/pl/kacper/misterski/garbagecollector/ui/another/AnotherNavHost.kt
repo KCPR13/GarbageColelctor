@@ -10,7 +10,8 @@ import androidx.navigation.compose.composable
 fun AnotherNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    goToMainActivity: ()-> Unit
+    goToMainActivity: ()-> Unit,
+    logInfo: (String,String) -> Unit
 ) {
     NavHost(
         modifier = modifier,
@@ -20,6 +21,7 @@ fun AnotherNavHost(
         composable("AnotherScreen") {
             AnotherScreen(
                 onBackPressed = goToMainActivity,
+                logInfo = logInfo
             )
         }
 
