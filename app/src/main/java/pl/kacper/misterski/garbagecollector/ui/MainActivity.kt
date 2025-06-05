@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
 
-        when (newConffig.orientation) {
+        when (newConfig.orientation) {
             Configuration.ORIENTATION_LANDSCAPE -> {
                 appFileLogger.log("GC_TEST", "MainActivity, Landscape mode")
             }
