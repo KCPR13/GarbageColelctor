@@ -1,0 +1,32 @@
+package pl.kacper.misterski.garbagecollector.ui.another
+
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import pl.kacper.misterski.garbagecollector.use_case.TestUseCase
+import pl.kacper.misterski.garbagecollector.util.AppFileLogger
+import javax.inject.Inject
+import javax.inject.Named
+
+@HiltViewModel
+class AnotherViewModel @Inject constructor(
+    private val appFileLogger: AppFileLogger,
+    @Named("Singleton UseCase") private val singletonTestUseCase: TestUseCase,
+    @Named("Unscoped Singleton UseCase") private val singletonUscopedTestUseCase: TestUseCase,
+    @Named("ViewModelScoped UseCase") private val viewmodelScopedTestUseCase: TestUseCase,
+    @Named("Unscoped ViewModelScope UseCase") private val unscopedViewmodelScopedTestUseCase: TestUseCase,
+) : ViewModel() {
+
+    init {
+        appFileLogger.log("GC_TEST", "AnotherViewModel init!")
+    }
+
+
+    override fun onCleared() {
+        super.onCleared()
+        appFileLogger.log("GC_TEST", "AnotherViewModel cleared!")
+    }
+
+    fun log(Tag: String, message: String) {
+        appFileLogger.log(Tag, message)
+    }
+}
